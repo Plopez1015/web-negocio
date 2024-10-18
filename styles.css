@@ -1,0 +1,619 @@
+/* Importar la fuente Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Estilos generales */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh; /* Ocupa toda la altura de la ventana del navegador */
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to right, #0509c3, #034fca, #4a82c3, #4caf9b, #00ab5b);
+  background-size: 200% 200%;
+  animation: gradientAnimation 10s ease infinite;
+  width: 100vw; /* Ocupa todo el ancho de la ventana del navegador */
+  overflow-x: hidden; /* Evita el desbordamiento horizontal */
+}
+
+/* Animación de fondo */
+@keyframes gradientAnimation {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+/* Menú */
+.menu {
+  display: flex;
+  background: #333;
+  padding: 15px 20px; /* Espaciado consistente */
+  color: #fff;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.menu-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Barra de búsqueda */
+.search-bar {
+  flex: 1;
+  display: flex;
+  max-width: 500px; /* Ajustado para mayor coherencia */
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.search-form {
+  display: flex;
+  width: 100%;
+}
+
+.search-form input[type="search"] {
+  padding: 10px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+  flex: 1;
+  margin-right: -1px;
+  font-size: 1em; /* Tamaño de fuente consistente */
+}
+
+.search-form .search-btn {
+  padding: 10px;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  background-color: #ff5722;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1em; /* Tamaño de fuente consistente */
+}
+
+.search-form .search-btn:hover {
+  background-color: #e64a19;
+}
+
+.site-title {
+  margin: 0;
+  font-size: 1.5em; /* Tamaño de fuente coherente */
+}
+
+/* Botones del menú */
+.menu-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 20px;
+}
+
+.menu-btn {
+  background-color: #333;
+  border: none;
+  color: #fff;
+  padding: 12px 20px; /* Ajustado para mayor coherencia */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em; /* Tamaño de fuente consistente */
+}
+
+.menu-btn:hover {
+  background-color: #e64a19;
+}
+
+/* Carrito */
+.cart {
+  display: flex;
+  align-items: center;
+}
+
+.cart-btn {
+  background-color: #ff5722;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em; /* Tamaño de fuente consistente */
+}
+
+.cart-btn:hover {
+  background-color: #e64a19;
+}
+
+.cart-details {
+  display: none;
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+.cart-details.hidden {
+  display: none;
+}
+
+.cart-details ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cart-details li {
+  margin-bottom: 10px;
+}
+
+/* Modal del carrito */
+#cart-modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  z-index: 1001;
+  width: 90%; /* Ajustado para ser responsive */
+  max-width: 400px; /* Ancho máximo */
+}
+
+#cart-modal .product-card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#cart-modal .product-card h3 {
+  margin: 0;
+  font-size: 1em; /* Tamaño de fuente consistente */
+}
+
+#cart-modal .product-card p {
+  margin: 0;
+  color: #555;
+}
+
+#cart-modal .product-card .product-price {
+  font-weight: bold;
+  color: #ff5722;
+}
+
+/* Botones del modal */
+#cart-modal .modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+#cart-modal .modal-buttons button {
+  background-color: #ff5722;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em; /* Tamaño de fuente consistente */
+}
+
+#cart-modal .modal-buttons button:hover {
+  background-color: #e64a19;
+}
+
+#close-cart-modal {
+  background-color: #f44336;
+}
+
+#close-cart-modal:hover {
+  background-color: #d32f2f;
+}
+
+/* Productos */
+.products {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.text-titulo {
+  font-size: 2em; /* Tamaño de fuente consistente */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.product-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+}
+
+.product-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-card {
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  max-width: 100%; /* Asegura que no se desborde */
+}
+
+.product-card img {
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.product-card h2 {
+  font-size: 1.2em; /* Tamaño de fuente consistente */
+  margin: 10px 0;
+}
+
+.product-card p {
+  color: #ff5722;
+  font-size: 1.1em; /* Tamaño de fuente consistente */
+}
+
+.product-card button.add-to-cart {
+  background-color: #ff5722;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em; /* Tamaño de fuente consistente */
+}
+
+.product-card button.add-to-cart:hover {
+  background-color: #e64a19;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .menu {
+    padding: 15px 10px;
+  }
+
+  .site-title {
+    font-size: 1.2em;
+  }
+
+  .search-bar {
+    max-width: 100%; /* Asegura que no se desborde */
+  }
+
+  .search-form input[type="search"],
+  .search-form .search-btn {
+    padding: 8px;
+  }
+
+  .menu-btn {
+    padding: 10px 15px;
+  }
+
+  .text-titulo {
+    font-size: 1.5em;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-form input[type="search"] {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .search-form .search-btn {
+    width: 100%;
+  }
+
+  .cart-details {
+    width: 100%;
+  }
+
+  .text-titulo {
+    font-size: 1.2em;
+  }
+}
+
+/* Modal del carrito */
+#cart-modal {
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  width: 300px; /* Ancho fijo para mantener la coherencia */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  display: none;
+  z-index: 1000;
+}
+
+#cart-modal.hidden {
+  display: none;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.modal-buttons button {
+  background-color: #ff5722;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em; /* Tamaño de fuente consistente */
+}
+
+.modal-buttons button:hover {
+  background-color: #e64a19;
+}
+
+/* Estilos para el pie de página */
+.footer {
+  padding: 20px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer p {
+  margin: 5px 0;
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer .social-media {
+  margin-top: 10px;
+}
+
+.footer .social-media .social-icon {
+  margin: 0 10px;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Estilos para la sección de Novedades y Promociones */
+.promotions {
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.promotions h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2em;
+  color: #333;
+}
+
+.promotions-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.promotion-item {
+  flex: 1 1 calc(33.333% - 20px);
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  padding: 10px;
+  background-color: #fff;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.promotion-item img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.promotion-item h3 {
+  margin: 10px 0;
+  font-size: 1.5em;
+}
+
+.promotion-item p {
+  margin: 10px 0;
+}
+
+.promotion-item .btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.promotion-item .btn:hover {
+  background-color: #0056b3;
+}
+
+/* Estilos para la sección de patrocinadores */
+.sponsors {
+  background: #f5f5f5; /* Fondo claro para resaltar la sección */
+  padding: 50px 20px; /* Espaciado alrededor de la sección */
+  text-align: center; /* Centra el texto */
+}
+
+.sponsors h2 {
+  font-size: 2em; /* Tamaño de fuente más grande para el título */
+  color: #333; /* Color del texto */
+  margin-bottom: 30px; /* Espacio debajo del título */
+}
+
+.sponsors-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centra los elementos en la fila */
+  gap: 20px; /* Espacio entre los elementos */
+}
+
+.sponsor-item {
+  background: #fff; /* Fondo blanco para los elementos del patrocinador */
+  border: 1px solid #ddd; /* Borde gris claro */
+  border-radius: 10px; /* Bordes redondeados */
+  padding: 20px; /* Espacio interior */
+  max-width: 200px; /* Ancho máximo para los elementos */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  transition: transform 0.3s, box-shadow 0.3s; /* Transiciones para el hover */
+}
+
+.sponsor-item img {
+  max-width: 100%; /* Asegura que la imagen no se salga del contenedor */
+  border-radius: 5px; /* Bordes redondeados en la imagen */
+}
+
+.sponsor-item p {
+  margin-top: 10px; /* Espacio encima del texto */
+  font-size: 1.1em; /* Tamaño de fuente para el texto */
+  color: #555; /* Color del texto */
+}
+
+/* Efecto hover para los elementos del patrocinador */
+.sponsor-item:hover {
+  transform: scale(1.05); /* Escalar ligeramente el elemento */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Aumentar la sombra en hover */
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+.card {
+  display: flex;
+  height: 70px;
+  width: 300px;
+}
+
+.card svg {
+  position: absolute;
+  display: flex;
+  width: 60%;
+  height: 100%;
+  font-size: 24px;
+  font-weight: 700;
+  opacity: 1;
+  transition: opacity 0.25s;
+  z-index: 2;
+  padding: 0.25rem;
+  cursor: pointer;
+}
+
+.card .social-link1,.card .social-link2,.card .social-link3,.card .social-link4,.card .social-link5 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25%;
+  color: whitesmoke;
+  font-size: 24px;
+  text-decoration: none;
+  transition: 0.25s;
+  border-radius: 50px;
+}
+
+.card svg {
+  transform: scale(1);
+  align-content: center;
+}
+
+.card .social-link1:hover {
+  background: #f09433;
+  background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+  background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+  animation: bounce_613 0.4s linear;
+}
+
+.card .social-link2:hover {
+  background-color: #242c34;
+  animation: bounce_613 0.4s linear;
+}
+
+.card .social-link3:hover {
+  background-color: #5865f2;
+  animation: bounce_613 0.4s linear;
+}
+
+.card .social-link4:hover {
+  background-color: #0a66c2;
+  animation: bounce_613 0.4s linear;
+}
+
+.card .social-link5:hover {
+  background-color: #ff8000;
+  animation: bounce_613 0.4s linear;
+}
+
+@keyframes bounce_613 {
+  40% {
+    transform: scale(1.4);
+  }
+
+  60% {
+    transform: scale(0.8);
+  }
+
+  80% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
